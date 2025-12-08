@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ExpenseType {
+  id   Int     @id @default(autoincrement())
+  name String  @db.VarChar(60)
+
+  expenses Expense[]
+  @@map("expense_type")
+}
+
+model Expense {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  name        String   @db.VarChar(100)
+  description String?
+  typeId      Int
+  type        ExpenseType     @relation(fields: [typeId], references: [id])
+
+  @@map("expense")
+}
