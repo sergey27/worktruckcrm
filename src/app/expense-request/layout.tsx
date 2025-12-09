@@ -4,8 +4,8 @@ interface IProps {
     children: React.ReactNode;
 }
 
-const ExpenseTypesLayout: FC<IProps> = ({ children }) => {
+const ExpenseRequestLayout: FC<IProps> = ({ children }) => {
     return <section>{children}</section>;
 };
 
-export default ExpenseTypesLayout;
+export default ExpenseRequestLayout;
