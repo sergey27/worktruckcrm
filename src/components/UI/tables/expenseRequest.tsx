@@ -12,7 +12,6 @@ const ExpenseRequestTable = () => {
     useEffect(() => {
         async function fetchExpenseTypes() {
             const response = await getExpenseRequests();
-            console.log("response: ", response);
             setExpenseRequests(response.expenseRequests || []);
         }
 
